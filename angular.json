@@ -118,8 +118,17 @@
               "devServerTarget": "web-projekt-travel-blog:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/web-projekt-travel-blog",
+            "netlifyToken": "d835a4c6f379f3bc9998bf0958c551ecb7c7e229b48b51bd8e02e9aed60affac",
+            "siteId": "6e6ef0f5-8529-43b0-9b58-3fba0358766b"
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "web-projekt-travel-blog"
 }
