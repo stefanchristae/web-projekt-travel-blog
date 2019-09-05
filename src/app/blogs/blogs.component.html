@@ -1,15 +1,10 @@
-<h2>My Blogs blogs component</h2>
-
-
-<ul class="blogs">
-  <li *ngFor="let blog of blogs">
-      <a routerLink="/detail/{{blog.id}}">
-          <span class="badge">{{blog.id}}</span> {{blog.titel}}
-      </a>
-      <!-- <button class="delete" title="delete hero" 
-      (click)="delete(hero)">x</button>-->
-  </li>
-</ul>
+<li *ngFor="let blog of blogs" class="panel panel-primary" style="list-style-type:none">
+  <a routerLink="/detail/{{blog.id}}">
+    <div class="panel-heading"> {{blog.titel}}</div>
+  </a>
+  <div class="panel-body">{{blog.shorttext}}</div>
+  <div class="panel-body">{{blog.user.name}}</div>
+</li>
 
 <!-- <div>
   <label>name:
