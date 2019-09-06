@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MOCK_BLOGS } from '../mock-blog';
 import { Blog } from '../blog';
+import { BlogService } from '../blog.service';
 
 @Component({
   selector: 'app-blogs',
@@ -8,17 +8,22 @@ import { Blog } from '../blog';
   styleUrls: ['./blogs.component.css']
 })
 export class BlogsComponent implements OnInit {
-  blogs = MOCK_BLOGS;
+  blogs: Blog[];
   selectedBlog: Blog;
 
-  constructor() { }
+  constructor(private blogService: BlogService) { }
 
   ngOnInit() {
-    // Blogs auflisten
+    this.getBlogs();
   }
 
   onSelect(blog: Blog): void {
     this.selectedBlog = blog;
     console.log(this.selectedBlog);
+  }
+  
+  // retrieve the blogs from the service.
+  getBlogs(): void {
+    this.blogs = this.blogService.getBlogs();
   }
 }
