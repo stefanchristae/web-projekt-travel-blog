@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

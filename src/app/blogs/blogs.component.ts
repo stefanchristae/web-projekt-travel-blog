@@ -18,6 +18,6 @@ export class BlogsComponent implements OnInit {
   
   // retrieve the blogs from the service.
   getBlogs(): void {
-    this.blogs = this.blogService.getBlogs();
+    this.blogService.getBlogs().subscribe(blogs => this.blogs = blogs);
   }
 }
