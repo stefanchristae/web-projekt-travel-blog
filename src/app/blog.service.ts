@@ -36,14 +36,14 @@ export class BlogService {
   /** POST: add a new blog to the server */
   addBlog(blog: Blog): Observable<Blog> {
     return this.http.post<Blog>(this.blogsUrl, blog, this.httpOptions).pipe(
-      tap((newBlog: Blog) => this.log(`added blog w/ id=${newBlog.id}`)),
+      tap((newBlog: Blog) => this.log(`added blog w/ id=${newBlog._id}`)),
       catchError(this.handleError<Blog>('addBlog'))
     );
   }
 
   /** DELETE: delete the hero from the server */
   deleteHero(blog: Blog | number): Observable<Blog> {
-    const id = typeof blog === 'number' ? blog : blog.id;
+    const id = typeof blog === 'number' ? blog : blog._id;
     const url = `${this.blogsUrl}/${id}`;
 
     return this.http.delete<Blog>(url, this.httpOptions).pipe(
@@ -55,7 +55,7 @@ export class BlogService {
   /** PUT: update the blog on the server */
   updateBlog(blog: Blog): Observable<any> {
     return this.http.put(this.blogsUrl, blog, this.httpOptions).pipe(
-      tap(_ => this.log(`updated blog id=${blog.id}`)),
+      tap(_ => this.log(`updated blog id=${blog._id}`)),
       catchError(this.handleError<any>('updateBlog'))
     );
   }

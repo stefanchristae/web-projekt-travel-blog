@@ -2,16 +2,16 @@ import { Blog } from './blog';
 import { User } from './user';
 
 const user1: User = {
-  id: 123,
+  _id: 123,
   name: "Leandra Müller"
 };
 const user2: User = {
-  id: 456,
+  _id: 456,
   name: "Peter Schumacher"
 };
 
 export const MOCK_BLOGS: Blog[] = [
-  { id: 11, 
+  { _id: 11, 
     user: user1,
     acquisitionTime: "15.09.2019",
     titel: "Ferien in Südafrika",
@@ -21,7 +21,7 @@ export const MOCK_BLOGS: Blog[] = [
     shorttext: "Die Ferien in Botsuana waren sehr schön",
     text: "Dies ist der Beschreibungstext"
   },
-  { id: 12, 
+  { _id: 12, 
     user: user1,
     acquisitionTime: "15.08.2019",
     titel: "Nebel in England",
@@ -31,7 +31,7 @@ export const MOCK_BLOGS: Blog[] = [
     shorttext: "Die Ferien in Manchester waren sehr schön",
     text: "Dies ist der Beschreibungstext"
   },
-  { id: 13, 
+  { _id: 13, 
     user: user2,
     acquisitionTime: "15.09.2018",
     titel: "Ferien in Indien",
@@ -41,7 +41,7 @@ export const MOCK_BLOGS: Blog[] = [
     shorttext: "Die Ferien in Neu-Delhi waren sehr schön",
     text: "Dies ist der Beschreibungstext"
   },
-  { id: 14, 
+  { _id: 14, 
     user: user2,
     acquisitionTime: "15.09.2017",
     titel: "Ferien in Türkey",
@@ -51,7 +51,7 @@ export const MOCK_BLOGS: Blog[] = [
     shorttext: "Die Ferien in Istanbul waren sehr schön",
     text: "Dies ist der Beschreibungstext"
   },
-  { id: 15, 
+  { _id: 15, 
     user: user2,
     acquisitionTime: "15.09.2019",
     titel: "Ferien in der Lombardei",
