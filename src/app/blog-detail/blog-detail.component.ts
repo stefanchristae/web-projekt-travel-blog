@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { BlogService }  from '../blog.service';
+import { Blog }  from '../blog';
 
 @Component({
   selector: 'app-blog-detail',
@@ -6,10 +10,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-detail.component.css']
 })
 export class BlogDetailComponent implements OnInit {
+  blog: Blog;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private blogService: BlogService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
+    this.getBlog();
+  }
+  
+  getBlog(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.blog = this.blogService.getBlog(id);
   }
 
+  goBack(): void {
+    this.location.back();
+  }
 }

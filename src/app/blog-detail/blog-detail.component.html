@@ -1,1 +1,8 @@
-<p>blog-detail works!</p>
+<div *ngIf="blog">
+  <h2>{{blog.titel | uppercase}}</h2>
+  <h4>{{blog.destination}}</h4>
+  <small>{{blog.user.name}}</small>
+  <p>{{blog.text}}</p>
+  <small>Reisezeit: {{blog.journeyStart}} - {{blog.travelPeriod}}</small>
+</div>
+<button (click)="goBack()">go back</button>

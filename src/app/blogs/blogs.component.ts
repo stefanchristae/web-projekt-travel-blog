@@ -9,17 +9,11 @@ import { BlogService } from '../blog.service';
 })
 export class BlogsComponent implements OnInit {
   blogs: Blog[];
-  selectedBlog: Blog;
 
   constructor(private blogService: BlogService) { }
 
   ngOnInit() {
     this.getBlogs();
-  }
-
-  onSelect(blog: Blog): void {
-    this.selectedBlog = blog;
-    console.log(this.selectedBlog);
   }
   
   // retrieve the blogs from the service.

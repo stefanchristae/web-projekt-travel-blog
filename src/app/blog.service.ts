@@ -12,4 +12,9 @@ export class BlogService {
   getBlogs(): Blog[] {
     return MOCK_BLOGS;
   }
+
+  getBlog(id: number): Blog { 
+    console.log(MOCK_BLOGS.find(blog => blog.id === id));
+    return MOCK_BLOGS.find(blog => blog.id === id);
+  }
 }
