@@ -1,3 +1,7 @@
+<div>
+    <button routerLink="/login">login</button>
+    <button routerLink="/register">register</button>
+</div>
 <li *ngFor="let blog of blogs" class="panel panel-primary" style="list-style-type:none">
   <a routerLink="/detail/{{blog.id}}">
     <div class="panel-heading"> {{blog.titel  | uppercase}}</div>

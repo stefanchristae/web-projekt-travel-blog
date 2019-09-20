@@ -13,11 +13,10 @@ export class BlogService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
   getBlogs(): Observable<Blog[]> {
+    console.log('Client - GET Blogs');
     return this.http.get<Blog[]>(this.blogsUrl).pipe(
       tap(_ => this.log('fetched blogs')),
       catchError(this.handleError<Blog[]>('getBlogs', [])));
