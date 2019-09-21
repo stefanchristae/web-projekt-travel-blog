@@ -10,16 +10,16 @@ const routes: Routes = [
     path: '', redirectTo: '/blogs', pathMatch: 'full'
   },
   {
-    path:"blogs", component: BlogsComponent
+    path: "blogs", component: BlogsComponent
   },
   {
-    path:"detail/:id", component: BlogDetailComponent
+    path: "detail/:id", component: BlogDetailComponent
   },
   {
-    path:"register", component: RegisterComponent
+    path: "register", component: RegisterComponent
   },
   {
-    path:"login", component: LoginComponent
+    path: "login", component: LoginComponent
   }
 ];
 
