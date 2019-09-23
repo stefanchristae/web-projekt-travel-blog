@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private registerUrl = '/register';  // URL to web api
-  private loginUrl = '/login';  // URL to web api
+  private registerUrl = 'http://localhost:4200/api/register';  // URL to web api
+  private loginUrl = 'http://localhost:4200/api/login';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,24 +18,20 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  submitRegister(body:any){
-    console.log(body);
-    console.log(`POST register on ${this.registerUrl}`);
-    return this.http.post<any>(this.registerUrl, body, this.httpOptions).pipe(
-      tap(body => this.log(`add new register: ${body}`)
+  submitRegister(user:User){
+    return this.http.post<any>(this.registerUrl, user, this.httpOptions).pipe(
+      tap(user => this.log(`add new register: ${user}`)
       ),
       catchError(this.handleError('submitregister'))
     );
-    // return this.http.post('http://localhost:4200/register', body,{
-    //   observe:'body'
-    // });
-
   }
 
-  login(body:any){
-    return this.http.post('http://localhost:4200/login', body,{
-      observe:'body'
-    });
+  login(user:User){
+    return this.http.post<any>(this.loginUrl, user, this.httpOptions).pipe(
+      tap(user => this.log(`login: ${user}`)
+      ),
+      catchError(this.handleError('login'))
+    );
   }
 
   getUserName() {

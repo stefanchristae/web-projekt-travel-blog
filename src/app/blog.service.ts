@@ -8,7 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BlogService {
-  private blogsUrl = '/blogs';  // URL to web api
+  private blogsUrl = 'http://localhost:4200/api/blogs';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
