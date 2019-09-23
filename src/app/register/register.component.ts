@@ -57,8 +57,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.authservice.submitRegister(this.registerForm.value)
         .subscribe(
+          res => {
+            localStorage.setItem('token', res.token)
+            this.router.navigate(['../login'], { relativeTo: this.activatedRoute });
+          },
           data => this.successMessage = 'Registration Success',
-          error => this.successMessage = 'Registration Unsuccess'
+          () => this.successMessage = 'Registration Unsuccess'
         );
     }
   }
