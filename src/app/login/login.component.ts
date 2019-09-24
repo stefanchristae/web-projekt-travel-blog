@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authservice.login(this.loginForm.value)
         .subscribe(
-          data => {
-            console.log(data);
+          res => {
+            console.log(res);
             // localStorage.setItem('token', data.toString());
             this.router.navigate(['/blogs'], { relativeTo: this.activatedRoute });
           },
-          error => { }
+          err => console.log(err)
         );
     }
   }

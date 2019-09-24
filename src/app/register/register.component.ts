@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
+
   registerForm: FormGroup;
   successMessage: String = '';
 
@@ -24,14 +24,14 @@ export class RegisterComponent implements OnInit {
     });
 
     this.registerForm.controls.password.valueChanges
-    .subscribe(
-      x => this.registerForm.controls.cnfpass.updateValueAndValidity()
-    );
+      .subscribe(
+        x => this.registerForm.controls.cnfpass.updateValueAndValidity()
+      );
   }
 
   ngOnInit() {
   }
-  
+
   isValid(controlName) {
     return this.registerForm.get(controlName).invalid && this.registerForm.get(controlName).touched;
   }
@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
   passValidator(control: AbstractControl) {
     if (control && (control.value !== null || control.value !== undefined)) {
       const cnfpassValue = control.value;
-
       const passControl = control.root.get('password');
       if (passControl) {
         const passValue = passControl.value;
