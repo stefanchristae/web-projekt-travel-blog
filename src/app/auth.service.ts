@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   submitRegister(user:User){
-    return this.http.post<any>(this.registerUrl, user, this.httpOptions).pipe(
+    return this.http.post<User>(this.registerUrl, user, this.httpOptions).pipe(
       tap(user => this.log(`add new register: ${user}`)
       ),
       catchError(this.handleError('submitregister'))
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   login(user:User){
-    return this.http.post<any>(this.loginUrl, user, this.httpOptions).pipe(
+    return this.http.post<User>(this.loginUrl, user, this.httpOptions).pipe(
       tap(user => this.log(`login: ${user}`)
       ),
       catchError(this.handleError('login'))
