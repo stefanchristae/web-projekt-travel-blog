@@ -4,10 +4,14 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/blogs', pathMatch: 'full'
+    path: '', redirectTo: '/main', pathMatch: 'full'
+  },
+  {
+    path: "main", component: MainComponent
   },
   {
     path: "blogs", component: BlogsComponent
