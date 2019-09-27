@@ -26,7 +26,7 @@ export class AuthService {
     );
   }
 
-  login(user:User){
+  login(user:User): Observable<any>{
     return this.http.post<User>(this.loginUrl, user, this.httpOptions).pipe(
       tap(user => this.log(`login: ${user}`)
       ),
