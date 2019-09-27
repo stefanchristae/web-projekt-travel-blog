@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   
+  user: User;
   loginForm: FormGroup;
+  showErrorMessage: boolean;
 
   constructor(private authservice: AuthService,
     private router: Router,
@@ -29,18 +32,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.value);
-
+    this.showErrorMessage == false;
+    // console.log(this.loginForm.value);
     if (this.loginForm.valid) {
       this.authservice.login(this.loginForm.value)
         .subscribe(
-          res => {
-            console.log(res);
-            // localStorage.setItem('token', data.toString());
-            this.router.navigate(['/blogs'], { relativeTo: this.activatedRoute });
+          (res : any) => {
+            this.user = res;
+            console.log(this.user._id)
+            if (this.user._id !== '') {
+              this.router.navigate(['/blogs'], { relativeTo: this.activatedRoute });
+            }
+            else{
+              this.showErrorMessage = true;
+            }
           },
-          err => console.log(err)
-        );
+          (err) => {
+            console.log(err)
+            this.showErrorMessage = true;
+          }
+        )
     }
   }
 

@@ -17,6 +17,9 @@
             </div>
         </form>
     </div>
+    <div *ngIf="showErrorMessage">
+        <h1>Invalid username and password Please try again</h1>
+      </div>
     <div>
         <div style="width: 290px; padding: 20px;">
             <button class="form-btn-hollow" (click)="movetoregister()">Register</button>
