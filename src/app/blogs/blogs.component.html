@@ -3,9 +3,9 @@
     <button routerLink="/register">register</button>
 </div>
 <li *ngFor="let blog of blogs" class="panel panel-primary" style="list-style-type:none">
-  <a routerLink="/detail/{{blog.id}}">
+  <a routerLink="/detail/{{blog._id}}">
     <div class="panel-heading"> {{blog.titel  | uppercase}}</div>
   </a>
   <div class="panel-body">{{blog.shorttext}}</div>
-  <div class="panel-body">{{blog.user.name}}</div>
+  <div class="panel-body">{{blog.username}}</div>
 </li>

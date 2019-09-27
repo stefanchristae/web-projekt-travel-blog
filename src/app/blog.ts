@@ -2,7 +2,7 @@ import {User} from './user';
 
 export class Blog {
     _id: number;
-    user: User;
+    username: String;
     acquisitionTime: string;
     titel: string;
     journeyStart: string;
@@ -10,5 +10,4 @@ export class Blog {
     destination: string;
     shorttext: string;
     text: string;
-    // picture
   }

@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   showErrorMessage: boolean;
 
+  private userUrl = 'http://localhost:4200/api/admin/';  // URL to web api
+
   constructor(private authservice: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
@@ -39,9 +41,12 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res : any) => {
             this.user = res;
-            console.log(this.user._id)
+            console.log(this.user._id);
+            console.log(this.user.username);
+            console.log(`${this.userUrl}${this.user.username}`);
             if (this.user._id !== '') {
-              this.router.navigate(['/blogs'], { relativeTo: this.activatedRoute });
+              // this.router.navigate([`${this.userUrl}${this.user.username}`]);
+              this.router.navigate([`../admin/${this.user.username}`], { relativeTo: this.activatedRoute });
             }
             else{
               this.showErrorMessage = true;

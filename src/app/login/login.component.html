@@ -13,13 +13,13 @@
                 <span *ngIf="isValid('password')">Password cannot be blank</span>
             </div>
             <div style="margin-top:40px;">
-                <button class="form-btn" (click)="login()">Sign In</button>
+                <button class="form-btn" (click)="login()">Login</button>
             </div>
         </form>
     </div>
     <div *ngIf="showErrorMessage">
         <h1>Invalid username and password Please try again</h1>
-      </div>
+    </div>
     <div>
         <div style="width: 290px; padding: 20px;">
             <button class="form-btn-hollow" (click)="movetoregister()">Register</button>

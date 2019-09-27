@@ -1,0 +1,10 @@
+<div>
+    <button routerLink="/blogs">logout</button>
+</div>
+<li *ngFor="let blog of blogs" class="panel panel-primary" style="list-style-type:none">
+    <a routerLink="/detail/{{blog.id}}">
+        <div class="panel-heading"> {{blog.titel  | uppercase}}</div>
+    </a>
+    <div class="panel-body">{{blog.shorttext}}</div>
+    <div class="panel-body">{{blog.username}}</div>
+</li>

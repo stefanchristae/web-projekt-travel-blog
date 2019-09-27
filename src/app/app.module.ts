@@ -11,6 +11,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MainComponent } from './main/main.component';
     BlogDetailComponent,
     LoginComponent,
     RegisterComponent,
-    MainComponent
+    MainComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

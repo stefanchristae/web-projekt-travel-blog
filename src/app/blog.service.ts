@@ -9,6 +9,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class BlogService {
   private blogsUrl = 'http://localhost:4200/api/blogs';  // URL to web api
+  private adminUrl = 'http://localhost:4200/api/admin';  // URL to web api
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -27,6 +29,14 @@ export class BlogService {
     return this.http.get<Blog>(url).pipe(
       tap(_ => this.log(`fetched blog id=${id}`)),
       catchError(this.handleError<Blog>(`getBlog id=${id}`))
+    );
+  }
+
+  getUserBlogs(username: String): Observable<Blog[]> {
+    const url = `${this.adminUrl}/${username}`;
+    return this.http.get<Blog[]>(url).pipe(
+      tap(_ => this.log(`fetched user username=${username}`)),
+      catchError(this.handleError<Blog[]>(`getUserBlogs username=${username}`))
     );
   }
 

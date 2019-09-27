@@ -5,6 +5,7 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -14,10 +15,16 @@ const routes: Routes = [
     path: "main", component: MainComponent
   },
   {
+    path: "admin/:username", component: AdminComponent
+  },
+  // { 
+  //   path: "admin", component: AdminComponent
+  // },
+  {
     path: "blogs", component: BlogsComponent
   },
   {
-    path: "detail/:id", component: BlogDetailComponent
+    path: "detail/:_id", component: BlogDetailComponent
   },
   {
     path: "register", component: RegisterComponent

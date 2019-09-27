@@ -34,12 +34,15 @@ export class AuthService {
     );
   }
 
-  getUserName() {
-    return this.http.get('http://localhost:4200/username', {
-      observe: 'body',
-      params: new HttpParams().append('token', localStorage.getItem('token'))
-    });
-  }
+  // getUserName(id: String): Observable<String>{
+  //   const url = `${this.userUrl}/${id}`;
+  //   console.log(url);
+  //   return this.http.get<String>(url).pipe(
+  //     tap(_ => this.log(`username: ${id}`)
+  //     ),
+  //     catchError(this.handleError<String>('username'))
+  //   );
+  // }
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
