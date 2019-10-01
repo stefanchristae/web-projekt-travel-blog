@@ -3,11 +3,10 @@ import {User} from './user';
 export class Blog {
     _id: number;
     username: String;
-    acquisitionTime: string;
-    titel: string;
-    journeyStart: string;
-    travelPeriod: string;
+    title: string;
     destination: string;
+    travelStartDate: string;
+    travelPeriod: string;
     shorttext: string;
-    text: string;
+    blogtext: string;
   }
