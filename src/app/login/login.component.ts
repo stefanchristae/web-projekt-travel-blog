@@ -41,10 +41,9 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res : any) => {
             this.user = res;
-            console.log(this.user._id);
             console.log(this.user.username);
             console.log(`${this.userUrl}${this.user.username}`);
-            if (this.user._id !== '') {
+            if (this.user.username !== '') {
               // this.router.navigate([`${this.userUrl}${this.user.username}`]);
               this.router.navigate([`../admin/${this.user.username}`], { relativeTo: this.activatedRoute });
             }

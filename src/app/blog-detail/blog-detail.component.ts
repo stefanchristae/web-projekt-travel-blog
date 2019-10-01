@@ -23,7 +23,7 @@ export class BlogDetailComponent implements OnInit {
   }
   
   getBlog(): void {
-    const id = + this.route.snapshot.paramMap.get('_id');
+    const id = + this.route.snapshot.paramMap.get('id');
     this.blogService.getBlog(id).subscribe(blog => this.blog = blog);
   }
 

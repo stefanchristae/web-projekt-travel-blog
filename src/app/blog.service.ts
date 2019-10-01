@@ -40,18 +40,17 @@ export class BlogService {
     );
   }
 
-  //////// Save methods //////////
-
-  /** POST: add a new blog to the server */
-  addBlog(blog: Blog): Observable<Blog> {
+  addBlog(blog: Blog, username: String): Observable<Blog> {
+    blog.username = username;
+    console.log(this.blogsUrl);
+    console.log(blog);
     return this.http.post<Blog>(this.blogsUrl, blog, this.httpOptions).pipe(
       tap((newBlog: Blog) => this.log(`added blog w/ id=${newBlog._id}`)),
       catchError(this.handleError<Blog>('addBlog'))
     );
   }
 
-  /** DELETE: delete the hero from the server */
-  deleteHero(blog: Blog | number): Observable<Blog> {
+  deleteBlog(blog: Blog | number): Observable<Blog> {
     const id = typeof blog === 'number' ? blog : blog._id;
     const url = `${this.blogsUrl}/${id}`;
 
@@ -61,7 +60,6 @@ export class BlogService {
     );
   }
 
-  /** PUT: update the blog on the server */
   updateBlog(blog: Blog): Observable<any> {
     return this.http.put(this.blogsUrl, blog, this.httpOptions).pipe(
       tap(_ => this.log(`updated blog id=${blog._id}`)),
@@ -69,12 +67,11 @@ export class BlogService {
     );
   }
 
-  /** GET hero by id. Return `undefined` when id not found */
   getBlogNo404<Data>(id: number): Observable<Blog> {
     const url = `${this.blogsUrl}/?id=${id}`;
     return this.http.get<Blog[]>(url)
       .pipe(
-        map(blogs => blogs[0]), // returns a {0|1} element array
+        map(blogs => blogs[0]), 
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
           this.log(`${outcome} blo id=${id}`);
@@ -83,7 +80,6 @@ export class BlogService {
       );
   }
 
-  /** Log a HeroService message with the MessageService */
   private log(message: string) {
     console.log(`BlogService: ${message}`);
   }

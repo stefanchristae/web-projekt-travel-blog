@@ -19,5 +19,6 @@ export class BlogsComponent implements OnInit {
   // retrieve the blogs from the service.
   getBlogs(): void {
     this.blogService.getBlogs().subscribe(blogs => this.blogs = blogs);
+    console.log(this.blogs);
   }
 }

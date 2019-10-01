@@ -24,7 +24,7 @@ const routes: Routes = [
     path: "blogs", component: BlogsComponent
   },
   {
-    path: "detail/:_id", component: BlogDetailComponent
+    path: "detail/:id", component: BlogDetailComponent
   },
   {
     path: "register", component: RegisterComponent

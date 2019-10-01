@@ -1,10 +1,68 @@
 <div>
     <button routerLink="/blogs">logout</button>
 </div>
+<button type="button" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal"
+    data-target="#exampleModal" aria-label="Close">
+    Add new Blog
+</button>
 <li *ngFor="let blog of blogs" class="panel panel-primary" style="list-style-type:none">
-    <a routerLink="/detail/{{blog.id}}">
-        <div class="panel-heading"> {{blog.titel  | uppercase}}</div>
-    </a>
+    <div class="panel-heading"> {{blog.title | uppercase}} - {{blog.destination}}</div>
+    <button class="delete" title="delete blog" (click)="deleteBlog(blog)">Delete Blog</button>
+    <button class="delete" title="delete blog" (click)="editBlog(blog)">Edit Blog</button>
     <div class="panel-body">{{blog.shorttext}}</div>
     <div class="panel-body">{{blog.username}}</div>
 </li>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Blog</h5>
+                <button type="button" #closeBtn class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addBlogForm">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input formControlName="title" type="text" rows=1 class="form-control"
+                            placeholder="Enter title">
+                        <span *ngIf="isValid('title')">Title cannot be blank</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Destination</label>
+                        <textarea formControlName="destination" type="text" rows=1 class="form-control"
+                            placeholder="Enter a destination"></textarea>
+                        <span *ngIf="isValid('destination')">Destination cannot be blank</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Travel startdate</label>
+                        <textarea formControlName="travelStartDate" type="date" rows=1 class="form-control"
+                            placeholder="Enter a travel startdate"></textarea>
+                        <span *ngIf="isValid('travelStartDate')">StartDate cannot be blank</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Travel period</label>
+                        <textarea formControlName="travelPeriod" type="text" rows=1 class="form-control"
+                            placeholder="Enter a travel period"></textarea>
+                        <span *ngIf="isValid('travelPeriod')">Period cannot be blank</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Shorttext</label>
+                        <textarea formControlName="shorttext" type="textarea" rows=4 class="form-control"
+                            placeholder="Enter a shorttext"></textarea>
+                        <span *ngIf="isValid('shorttext')">Shorttext cannot be blank</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Blogtext</label>
+                        <textarea formControlName="blogtext" type="textarea" rows=10 class="form-control"
+                            placeholder="Enter a blogtext"></textarea>
+                        <span *ngIf="isValid('blogtext')">Blogtext cannot be blank</span>
+                    </div>
+                    <button type="button" data-dismiss="modal" class="form-btn" (click)="addBlog()">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
